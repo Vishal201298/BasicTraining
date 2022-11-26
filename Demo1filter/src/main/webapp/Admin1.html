@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<script type="text/javascript">
+
+	function submitForm() {
+		
+		document.getElementById("loginForm").action = "admin1";
+		document.getElementById("adminname").value = btoa(document.getElementById("adminname").value);
+		document.getElementById("password").value = btoa(document.getElementById("password").value);
+		document.getElementById("loginForm").submit();
+	}
+	
+</script>
+</head>
+<body>
+	<form method="post" name="loginForm" id="loginForm">
+		AdminName : <input type="text" name="adminname" id="adminname" />
+		Password : <input type="password" name="password" id="password" />
+
+		<button type="button" name="loginBtn" id="loginBtn" onclick="submitForm();">Login</button>
+
+	</form>
+</body>
+</html>
