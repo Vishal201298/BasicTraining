@@ -4,21 +4,24 @@
 <meta charset="UTF-8">
 <title>Login</title>
 <script type="text/javascript">
+
 	function submitForm() {
-		document.getElementById("loginForm").action = "login1";
-		document.getElementById("username").value = btoa(document.getElementById("username").value);
+		
+		document.getElementById("loginForm").action = "admin1";
+		document.getElementById("adminname").value = btoa(document.getElementById("adminname").value);
 		document.getElementById("password").value = btoa(document.getElementById("password").value);
 		document.getElementById("loginForm").submit();
 	}
+	
 </script>
 </head>
 <body>
 	<form method="post" name="loginForm" id="loginForm">
-		Username : <input type="text" name="username" id="username" />
+		AdminName : <input type="text" name="adminname" id="adminname" />
 		Password : <input type="password" name="password" id="password" />
 
 		<button type="button" name="loginBtn" id="loginBtn" onclick="submitForm();">Login</button>
-   <!--     <a href="Admin1.html">Admin Login</a>   --->
+
 	</form>
 </body>
 </html>

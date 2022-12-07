@@ -1,9 +1,9 @@
 package miniprojectfilter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -37,12 +37,12 @@ public class MyFilter extends HttpFilter implements Filter {
 		System.out.println("Without filter");
 		String password = request.getParameter("password");
 		
-	//	if ("yadav".equals(password)) {
+//		if ("yadav".equals(password)) {
 			chain.doFilter(request, response);
 			System.out.println("After filter");
-	//	} else {
-	//		response.setContentType("text/html");
-	//		response.getWriter().append("Unauthorized Access !!!");
-		}
-	//}
+//		} else {
+			response.setContentType("text/html");
+			response.getWriter().append("Unauthorized Access !!!");
+//		}
+	}
 }

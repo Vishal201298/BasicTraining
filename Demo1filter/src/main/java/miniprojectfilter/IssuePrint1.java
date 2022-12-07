@@ -84,14 +84,15 @@ public class IssuePrint1 extends HttpServlet {
 		        response.getWriter().append("</table>");
 		        
 		    }
-		    String user=request.getParameter("username");
-		   if(user.equals("username")) {
+//		    String user=request.getParameter("adminname");
+//		   if(user.equals("adminname")) {
 		        
 		        response.getWriter().append("<a href=\"Landing1.html\">Add Issue </a>");
-		        response.getWriter().append("<a href=\"Login1.html\">Logout </a>");
-	}else {
-		response.getWriter().append("Other user");
-	}
+		        response.getWriter().append("<a href=\"Home.html\">Logout </a>");
+//	}else {
+//		response.getWriter().append("Other user");
+		        
+//	}
 	}
 	
 	}
