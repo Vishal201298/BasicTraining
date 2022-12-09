@@ -33,5 +33,26 @@ public class UserDao extends BaseDao {
           
         return status;  
     }  
+    
+    //check method
+//    public  boolean checkType(String type) {
+//
+//        boolean find = false;
+//        PreparedStatement pst = null;  
+//        ResultSet rs = null;  
+//        try( Connection con=getConnection(); ){
+//            pst = con.prepareStatement("SELECT * FROM user WHERE type=?;");  
+//            pst.setString(1, type);  
+//            rs = pst.executeQuery();
+//            while (rs.next()) {
+//           if (rs.getString("type").equals("admin")) {
+//               find = true;
+//                } else {find = false;}
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return find;  
+//    }
    
 }

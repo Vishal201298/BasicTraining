@@ -36,10 +36,11 @@ public class EditServlet2 extends HttpServlet {
 		 response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
 	          
-	        String id=request.getParameter("id");  
-	      //  String id=String.substring(sid);  
+	        String sid1=request.getParameter("id");  
+	        int id=Integer.parseInt(sid1); 
 	        String discription=request.getParameter("discription");  
-	        String userid=request.getParameter("userid");
+	        String sid=request.getParameter("userid");
+	         int userid=Integer.parseInt(sid);
 	        String Status=request.getParameter("status");  
 	       
 	          

@@ -43,7 +43,8 @@ public class LoginServlet extends HttpServlet {
   
         String name=request.getParameter("name");
         String psw= request.getParameter("password");
-        String QUERY="select ID, type from user where username=? and password=?"; 
+       // String typ= request.getParameter("type");
+        String QUERY="select * from user where username=? and password=?"; 
 
         try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -53,21 +54,25 @@ public class LoginServlet extends HttpServlet {
 		}//Connection
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/information","root","root")) {
             PreparedStatement ps = con.prepareStatement(QUERY);
-            try {
+            
 				ps.setString(1, name);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            ps.setString(2, psw);
+                ps.setString(2, psw);
+            //    ps.setString(3, typ);
             try (ResultSet rs = ps.executeQuery()) {
-            	rs.getObject(0);
-                if(rs.next()){
+            	while(rs.next()) {
+            	 if (rs.getString("type").equals("admin")) {
+            		 out.print("<p>Login successfully!</p>");  
+            //		 request.setAttribute("usertype", "admin");
+                     request.getRequestDispatcher("check.html").include(request, response); 
+            	 }
+                if(rs.getString("type").equals("user")){
                 	 out.print("<p>Login successfully!</p>");  
                    request.getRequestDispatcher("issue.html").include(request, response); 
+            //    	 request.setAttribute("usertype", "user");
                 }else{
                     out.println("ERROR");
                 }
+            	}
             }
         } catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -76,5 +81,3 @@ public class LoginServlet extends HttpServlet {
 	}
 
 }
-
-

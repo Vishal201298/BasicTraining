@@ -37,7 +37,8 @@ public class Issueservlet extends HttpServlet {
           
   //      String id=request.getParameter("id");
         String discription=request.getParameter("discription"); 
-        String userid=request.getParameter("userid");
+        String sid=request.getParameter("userid");
+         int userid=Integer.parseInt(sid);
         String status=request.getParameter("status");  
         
           

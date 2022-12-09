@@ -1,26 +1,26 @@
 package com.issue;
 
 public class Issue {
-	private String id,userid;
+	private int id,userid;
 	private String discription,status;
 	
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
 
-	public String getUserid() {
+	public int getUserid() {
 		return userid;
 	}
 
 
-	public void setUserid(String userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 

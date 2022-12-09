@@ -17,7 +17,7 @@ public class IssueDao extends BaseDao {
             PreparedStatement ps=con.prepareStatement("insert into issue(discription,user_id,status) values (?,?,?)");  
          //   ps.setString(1,e.getId());
             ps.setString(1,e.getDiscription());  
-            ps.setString(2,e.getUserid());
+            ps.setInt(2,e.getUserid());
             ps.setString(3,e.getStatus());
            
               
@@ -37,10 +37,10 @@ public class IssueDao extends BaseDao {
             PreparedStatement ps=con.prepareStatement(  
                          "update issue set  discription=?,user_id=?, status=? where ID=? ");  
             ps.setString(1,e.getDiscription());  
-            ps.setString(2,e.getUserid());
+            ps.setInt(2,e.getUserid());
             ps.setString(3,e.getStatus());  
            
-            ps.setString(4,e.getId());  
+            ps.setInt(4,e.getId());  
               
             status1=ps.executeUpdate();  
               
@@ -71,7 +71,7 @@ public class IssueDao extends BaseDao {
             ps.setInt(1,id);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
-                e.setId(rs.getString(1));  
+                e.setId(rs.getInt(1));  
                 e.setDiscription(rs.getString(2));  
                 e.setStatus(rs.getString(3));  
                  
@@ -80,29 +80,63 @@ public class IssueDao extends BaseDao {
         }catch(Exception ex){ex.printStackTrace();}  
           
         return e;  
+  
+        
     }  
+    // Admin method
     public List<Issue> getAllIssue(){  
-    	String query= "select * from issue ";
+    	String query= "select * from issue";
         List<Issue> list=new ArrayList<Issue>();  
           
         try{  
             Connection con=getConnection();  
             PreparedStatement ps=con.prepareStatement(query);  
-   //         ps.setString(1,userid);
+  //          ps.setInt(1,userid);
             ResultSet rs=ps.executeQuery();  
-            while(rs.next()){  
+            while(rs.next()){ 
+//            	 if (rs.getString("user_id").equals(userid)) {
                 Issue e=new Issue();  
-                e.setId(rs.getString(1));  
+                e.setId(rs.getInt(1));  
                 e.setDiscription(rs.getString(2)); 
-                e.setUserid(rs.getString(3));
+                e.setUserid(rs.getInt(3));
                 e.setStatus(rs.getString(4));  
                  
-                list.add(e);  
-            }  
+                list.add(e); 
+            	 }
+ //           }  
             con.close();  
         }catch(Exception e){e.printStackTrace();}  
-          
+        
         return list;  
+        
+    }
+    
+  //  User method  
+    public List<Issue> getIssueByUserid(){  
+    	String query= "select * from issue";
+        List<Issue> list1=new ArrayList<Issue>();  
+          
+        try{  
+            Connection con=getConnection();  
+            PreparedStatement ps=con.prepareStatement(query);  
+       //     ps.setInt(1,userid);
+            ResultSet rs=ps.executeQuery();  
+            while(rs.next()){ 
+//            	 if (rs.getString("user_id").equals(userid)) {
+                Issue e=new Issue();  
+                e.setId(rs.getInt(1));  
+                e.setDiscription(rs.getString(2)); 
+                e.setUserid(rs.getInt(3));
+                e.setStatus(rs.getString(4));  
+                 
+                list1.add(e); 
+            	 }
+ //           }  
+            con.close();  
+        }catch(Exception e){e.printStackTrace();}  
+        
+        return list1;  
+        
     }
 
 
